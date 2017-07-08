@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "target": "es2015",
+        "outDir": "dist",
+        "sourceMap": false,
+        "declaration": true,
+        "module": "commonjs",
+        "removeComments": false,
+        "strictNullChecks": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": false,
+        "moduleResolution": "node"
+    }
+}

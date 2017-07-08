@@ -1,0 +1,31 @@
+{
+  "name": "@drawgaiden/easel",
+  "version": "1.0.0",
+  "description": "Canvas drawing application library used by Draw Gaiden.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drawgaiden/easel.git"
+  },
+  "keywords": [
+    "canvas",
+    "drawing",
+    "typescript",
+    "html5"
+  ],
+  "author": "Corey Schram <coreyschram@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/drawgaiden/easel/issues"
+  },
+  "homepage": "https://github.com/drawgaiden/easel#readme",
+  "devDependencies": {
+    "@types/jest": "^20.0.2",
+    "jest": "^20.0.4",
+    "ts-jest": "^20.0.6",
+    "typescript": "^2.4.1"
+  }
+}
