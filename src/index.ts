@@ -26,7 +26,7 @@ const defaultOptions: EaselOptions = {
     onDraw: () => {}
 };
 
-type ToolFunction = (event: string, coord?: Coord) => void;
+type ToolFunction = (event: string, coord?: Coord) => Coord[] | void;
 type Tools = {
     [name: string]: Tool | ToolFunction
 };
@@ -159,12 +159,12 @@ export default class Easel {
     clear() {
         (this.tools.rectangle as Tool).draw([
             { x: 0, y: 0},
-            { x: this.options.width, y: this.options.height }
+            { x: this.options.width as number, y: this.options.height as number }
         ], {
             strokeStyle: this.options.backgroundColor,
             fillStyle: this.options.backgroundColor,
         });
-        this.draftCtx.clearRect(0, 0, this.options.width, this.options.height);
+        this.draftCtx.clearRect(0, 0, this.options.width as number, this.options.height as number);
     }
 
     getTool(): string {
@@ -181,7 +181,7 @@ export default class Easel {
         if (this.tools[this.tool] instanceof Tool) {
             return (this.tools[this.tool] as Tool).settings;
         }
-        return null;
+        return {};
     }
 
     setStrokeColor(color: string) {
@@ -194,7 +194,7 @@ export default class Easel {
         this.setToolSetting('fillStyle', color);
     }
 
-    draw(tool: string, path: Coord[], settings: ToolSettings = null) {
+    draw(tool: string, path: Coord[], settings: ToolSettings = {}) {
         if (this.tools[tool] instanceof Tool) {
             (this.tools[tool] as Tool).draw(path, settings);
         }
@@ -212,7 +212,7 @@ export default class Easel {
         });
     }
 
-    private callEvent(eventName: string, coord?: Coord) {
+    private callEvent(eventName: string, coord?: Coord): Coord[] | void {
         if (this.tools[this.tool] instanceof Tool) {
             let tool = this.tools[this.tool] as Tool;
             if (coord) {
@@ -231,18 +231,18 @@ export default class Easel {
     }
 
     private setOffset(coord: Coord) {
-        if (this.options.width > this.canvasWrap.clientWidth) {
+        if (this.options.width as number > this.canvasWrap.clientWidth) {
             if (coord.x > 0) {
                 coord.x = 0;
-            } else if (coord.x < (this.canvasWrap.clientWidth - this.options.width)) {
-                coord.x = this.canvasWrap.clientWidth - this.options.width;
+            } else if (coord.x < (this.canvasWrap.clientWidth - (this.options.width as number))) {
+                coord.x = this.canvasWrap.clientWidth - (this.options.width as number);
             }
         }
-        if (this.options.height > this.canvasWrap.clientHeight) {
+        if (this.options.height as number > this.canvasWrap.clientHeight) {
             if (coord.y > 0) {
                 coord.y = 0;
-            } else if (coord.y < (this.canvasWrap.clientHeight - this.options.height)) {
-                coord.y = this.canvasWrap.clientHeight - this.options.height;
+            } else if (coord.y < (this.canvasWrap.clientHeight - (this.options.height as number))) {
+                coord.y = this.canvasWrap.clientHeight - (this.options.height as number);
             }
         }
         this.offsetCoord = coord;
@@ -281,7 +281,9 @@ export default class Easel {
         if (this.drawing) {
             this.drawing = false;
             let path = this.callEvent('mouseUp');
-            this.options.onDraw(path);
+            if (path && this.options.onDraw) {
+                this.options.onDraw(path);
+            }
         }
     };
 
@@ -299,7 +301,7 @@ export default class Easel {
     private onTouchEvent = (e: TouchEvent) => {
         e.preventDefault();
         const touch = e.changedTouches[0];
-        let mouseEventName: string;
+        let mouseEventName = '';
         if (e.type === 'touchstart') {
             mouseEventName = 'mousedown';
         } else if (e.type === 'touchend') {
