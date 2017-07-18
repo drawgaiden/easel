@@ -44,7 +44,7 @@ export default class Easel {
     private toolOptions: HTMLInputElement[];
     private strokeColor: HTMLInputElement;
     private fillColor: HTMLInputElement;
-    private colorSwitch: HTMLInputElement;
+    private colorSwitch: HTMLAnchorElement;
     private toolSize: HTMLInputElement;
 
     private tools: Tools;
@@ -88,7 +88,7 @@ export default class Easel {
         this.toolOptions = Array.from(this.container.querySelectorAll('[name=tool]')) as HTMLInputElement[];
         this.strokeColor = this.container.querySelectorAll('[name=stroke-color]')[0] as HTMLInputElement;
         this.fillColor = this.container.querySelectorAll('[name=fill-color]')[0] as HTMLInputElement;
-        this.colorSwitch = this.container.querySelectorAll('[name=color-switch]')[0] as HTMLInputElement;
+        this.colorSwitch = this.container.querySelectorAll('.easel__color-switch')[0] as HTMLAnchorElement;
         this.toolSize = this.container.querySelectorAll('[name=size]')[0] as HTMLInputElement;
 
         const moveTool = (eventName: string, coord?: Coord) => {
