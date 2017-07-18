@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es2015",
-        "outDir": "dist",
+        "target": "es5",
+        "outDir": "lib",
         "sourceMap": false,
         "declaration": true,
         "module": "commonjs",
@@ -9,6 +9,10 @@
         "strictNullChecks": true,
         "noImplicitReturns": true,
         "noImplicitAny": false,
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "lib":[
+            "es2015",
+            "dom"
+        ]
     }
 }

@@ -2,7 +2,10 @@
   "name": "@drawgaiden/easel",
   "version": "0.1.0",
   "description": "Canvas drawing application library used by Draw Gaiden.",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
+  "files":[
+    "lib/"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "tsc -w"
