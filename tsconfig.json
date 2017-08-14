@@ -4,7 +4,7 @@
         "outDir": "lib",
         "sourceMap": false,
         "declaration": true,
-        "module": "commonjs",
+        "module": "umd",
         "removeComments": false,
         "strictNullChecks": true,
         "noImplicitReturns": true,
@@ -14,5 +14,8 @@
             "es2015",
             "dom"
         ]
-    }
+    },
+    "include": [
+        "src/**.ts"
+    ]
 }

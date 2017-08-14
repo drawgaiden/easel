@@ -1,6 +1,6 @@
 import { Tool } from './tool';
 import { ToolSettings, Coord } from '../util';
-import simplify from 'simplify-js';
+import * as simplify from 'simplify-js';
 
 export default class PencilTool extends Tool {
     mouseMove(coord: Coord) {
