@@ -25,7 +25,7 @@ export default class PencilTool extends Tool {
             return;
         }
 
-        settings = Object.assign({}, settings, this.settings);
+        settings = Object.assign({}, this.settings, settings);
 
         this.finalCtx.beginPath();
         this._resetCtx(this.finalCtx, settings);

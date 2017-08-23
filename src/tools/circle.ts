@@ -28,7 +28,7 @@ export default class CircleTool extends Tool {
     }
 
     draw(path: Coord[], settings: ToolSettings = {}) {
-        settings = Object.assign({}, settings, this.settings);
+        settings = Object.assign({}, this.settings, settings);
         this._resetCtx(this.finalCtx, settings);
         this._draw(path, this.finalCtx);
     }
