@@ -351,14 +351,14 @@ export default class Easel {
     };
 
     private onToolSizeChange = (e: Event) => {
-        this.setToolSetting('lineWidth', this.toolSize.value);
+        this.setToolSetting('lineWidth', parseInt(this.toolSize.value, 10));
     };
 
     private onToolOpacityChange = (e: Event) => {
-        this.setToolSetting('opacity', this.toolOpacity.value);
+        this.setToolSetting('opacity', parseInt(this.toolOpacity.value, 10));
     };
 
     private onToolSmoothnessChange = (e: Event) => {
-        this.setToolSetting('smoothness', this.toolSmoothness.value);
+        this.setToolSetting('smoothness', parseInt(this.toolSmoothness.value, 10));
     };
 }
