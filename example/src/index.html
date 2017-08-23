@@ -23,7 +23,29 @@
 <body>
     <div class="container">
         <div id="easel" class="easel">
-            <div class="easel__toolbar">
+            <div class="easel__settings">
+                <div class="easel__tool-colors">
+                    <input type="color" name="stroke-color" value="#000000" />
+                    <a href="#" class="easel__color-switch">↔</a>
+                    <input type="color" name="fill-color" value="#ffffff" />
+                </div>
+                <div class="easel__tool-size">
+                    <span>Size:</span>
+                    <input type="range" name="size" min="1" max="40" value="1" />
+                </div>
+                <div class="easel__tool-opacity">
+                    <span>Opacity:</span>
+                    <input type="range" name="opacity" min="0" max="100" value="100" />
+                </div>
+                <div class="easel__tool-smoothness">
+                    <span>Smoothness:</span>
+                    <input type="range" name="smoothness" min="0" max="100" value="80" />
+                </div>
+                <button class="easel__save">
+                    Save
+                </button>
+            </div>
+            <div class="easel__main">
                 <ul class="easel__tools">
                     <li class="easel__tool">
                         <input type="radio" name="tool" id="easel_tool_pencil" value="pencil" checked>
@@ -62,21 +84,10 @@
                         </label>
                     </li>
                 </ul>
-                <div class="easel__tool-colors">
-                    <input type="color" name="stroke-color" value="#000000" />
-                    <a href="#" class="easel__color-switch">↔</a>
-                    <input type="color" name="fill-color" value="#ffffff" />
+                <div class="easel__canvas">
+                    <canvas class="easel__canvas-final"></canvas>
+                    <canvas class="easel__canvas-draft"></canvas>
                 </div>
-                <div class="easel__tool-size">
-                    <input type="range" name="size" min="1" max="40" value="1" />
-                </div>
-                <button class="easel__save">
-                    Save
-                </button>
-            </div>
-            <div class="easel__canvas">
-                <canvas class="easel__canvas-final"></canvas>
-                <canvas class="easel__canvas-draft"></canvas>
             </div>
         </div>
     </div>

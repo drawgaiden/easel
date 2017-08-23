@@ -32,7 +32,9 @@ export class Tool {
             lineWidth: 1,
             lineCap: 'round',
             lineJoin: 'round',
+            opacity: 100,
             globalCompositeOperation: 'source-over',
+            smoothness: 80,
             primary: true,
             sendUpdates: true
         };
@@ -86,6 +88,7 @@ export class Tool {
         ctx.lineWidth = settings.lineWidth as number;
         ctx.lineCap = settings.lineCap as string;
         ctx.lineJoin = settings.lineJoin as string;
+        ctx.globalAlpha = settings.opacity as number / 100;
         ctx.globalCompositeOperation = settings.globalCompositeOperation as string;
     }
 

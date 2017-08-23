@@ -9,7 +9,9 @@ export interface ToolSettings {
     lineWidth?: number;
     lineCap?: string;
     lineJoin?: string;
+    opacity?: number;
     globalCompositeOperation?: string;
+    smoothness?: number;
     primary?: boolean;
     sendUpdates?: boolean;
 }

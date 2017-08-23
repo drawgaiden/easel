@@ -46,6 +46,8 @@ export default class Easel {
     private fillColor: HTMLInputElement;
     private colorSwitch: HTMLAnchorElement;
     private toolSize: HTMLInputElement;
+    private toolOpacity: HTMLInputElement;
+    private toolSmoothness: HTMLInputElement;
 
     private tools: Tools;
     private tool: string;
@@ -90,6 +92,8 @@ export default class Easel {
         this.fillColor = this.container.querySelectorAll('[name=fill-color]')[0] as HTMLInputElement;
         this.colorSwitch = this.container.querySelectorAll('.easel__color-switch')[0] as HTMLAnchorElement;
         this.toolSize = this.container.querySelectorAll('[name=size]')[0] as HTMLInputElement;
+        this.toolOpacity = this.container.querySelectorAll('[name=opacity]')[0] as HTMLInputElement;
+        this.toolSmoothness = this.container.querySelectorAll('[name=smoothness]')[0] as HTMLInputElement;
 
         const moveTool = (eventName: string, coord?: Coord) => {
             if (eventName === 'mouseDown' && coord) {
@@ -151,6 +155,8 @@ export default class Easel {
         this.fillColor.addEventListener('change', this.onFillColorChange, true);
         this.colorSwitch.addEventListener('click', this.onColorSwitchClick, true);
         this.toolSize.addEventListener('change', this.onToolSizeChange, true);
+        this.toolOpacity.addEventListener('change', this.onToolOpacityChange, true);
+        this.toolSmoothness.addEventListener('change', this.onToolSmoothnessChange, true);
 
         // Clear canvas
         this.clear();
@@ -346,5 +352,13 @@ export default class Easel {
 
     private onToolSizeChange = (e: Event) => {
         this.setToolSetting('lineWidth', this.toolSize.value);
+    };
+
+    private onToolOpacityChange = (e: Event) => {
+        this.setToolSetting('opacity', this.toolOpacity.value);
+    };
+
+    private onToolSmoothnessChange = (e: Event) => {
+        this.setToolSetting('smoothness', this.toolSmoothness.value);
     };
 }

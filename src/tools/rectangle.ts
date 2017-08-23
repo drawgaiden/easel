@@ -45,8 +45,7 @@ export default class RectangleTool extends Tool {
     }
 
     draw(path: Coord[], settings: ToolSettings = {}) {
-        settings = settings || this.settings;
-
+        settings = Object.assign({}, settings, this.settings);
         this._resetCtx(this.finalCtx, settings);
         this._draw(path, this.finalCtx);
     }

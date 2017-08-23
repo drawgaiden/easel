@@ -4,7 +4,7 @@
         "outDir": "lib",
         "sourceMap": false,
         "declaration": true,
-        "module": "umd",
+        "module": "commonjs",
         "removeComments": false,
         "strictNullChecks": true,
         "noImplicitReturns": true,

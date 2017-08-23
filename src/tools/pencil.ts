@@ -25,7 +25,7 @@ export default class PencilTool extends Tool {
             return;
         }
 
-        settings = settings || this.settings;
+        settings = Object.assign({}, settings, this.settings);
 
         this.finalCtx.beginPath();
         this._resetCtx(this.finalCtx, settings);
@@ -42,7 +42,7 @@ export default class PencilTool extends Tool {
             );
             this.finalCtx.fill();
         } else {
-            path = simplify(path);
+            path = simplify(path, settings.smoothness as number / 100);
             if (path.length === 2) {
                 this.finalCtx.moveTo(path[0].x, path[0].y);
                 this.finalCtx.lineTo(path[1].x, path[1].y);

@@ -8,32 +8,56 @@ $color-primary-darker: #01846A;
     height: 100%;
     position: relative;
     width: 100%;
+
+    &, & * {
+        box-sizing: border-box;
+    }
 }
 
-.easel__toolbar {
+.easel__settings {
     background: $color-primary;
-    border-bottom: 2px solid $color-primary-dark;
     height: 50px;
+    line-height: 50px;
+    padding: 0.75em;
     width: 100%;
 }
 
+.easel__main {
+    height: calc(100% - 50px);
+    width: 100%;
+
+    & :after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
 .easel__tools {
+    background: $color-primary;
+    display: inline-block;
+    float: left;
+    height: 100%;
     list-style: none;
     margin: 0;
     padding: 0;
+    width: 50px;
 }
 
-.easel__tools,
 .easel__tool-colors,
-.easel__tool-size {
+.easel__tool-size,
+.easel__tool-opacity,
+.easel__tool-smoothness {
     display: inline-block;
-    margin-right: 2em;
-    vertical-align: middle;
+    height: 100%;
+    margin-right: 1em;
+    vertical-align: top;
 }
 
 .easel__tool {
-    display: inline-block;
     font-size: 2.5em;
+    height: 50px;
+    width: 50px;
 
     input {
         display: none;
@@ -42,7 +66,10 @@ $color-primary-darker: #01846A;
     label {
         cursor: pointer;
         display: inline-block;
+        height: 50px;
         padding: 0.5em;
+        text-align: center;
+        width: 50px;
     }
 
     input:checked + label {
@@ -55,19 +82,14 @@ $color-primary-darker: #01846A;
 }
 
 .easel__tool-colors {
-    height: 30px;
-
     input[type="color"] {
         background-color: transparent;
         border: none;
         cursor: pointer;
+        height: 35px;
         margin: 0;
         padding: 0;
-    }
-
-    input[type="color"] {
-        height: 30px;
-        width: 30px;
+        width: 35px;
     }
 
     input[type="color"]::-webkit-color-swatch-wrapper {
@@ -81,17 +103,27 @@ $color-primary-darker: #01846A;
 
     a {
         color: #FFFFFF;
-        display: inline-block;
-        font-size: 1.8em;
-        padding: 0.3em;
+        font-size: 3em;
+        position: relative;
         text-decoration: none;
-        vertical-align: top;
+        top: -0.25em;
     }
 }
 
-.easel__tool-size {
+.easel__tool-size,
+.easel__tool-opacity,
+.easel__tool-smoothness {
+    span {
+        display: inline-block;
+        font-size: 1.5em;
+        height: 100%;
+        line-height: 35px;
+        padding: 0 0.5em;
+        vertical-align: top;
+    }
+
     input[type="range"] {
-        width: 150px;
+        width: 100px;
     }
 
     input[type="range"]:focus {
@@ -109,9 +141,7 @@ $color-primary-darker: #01846A;
     display: inline-block;
     float: right;
     font-size: 1.8em;
-    height: calc(100% - 0.7em);
-    margin: 0.35em;
-    vertical-align: middle;
+    height: 100%;
     width: 100px;
 
     &:active {
@@ -121,10 +151,11 @@ $color-primary-darker: #01846A;
 
 .easel__canvas {
     background: $color-primary-darker;
-    height: calc(100% - 52px);
+    display: inline-block;
+    height: 100%;
     overflow: hidden;
     position: relative;
-    width: 100%;
+    width: calc(100% - 50px);
 
     canvas {
         position: absolute;
