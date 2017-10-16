@@ -109,6 +109,7 @@ export default class Easel {
                         x: this.anchorCoord.x - coord.x,
                         y: this.anchorCoord.y - coord.y
                     };
+                    this.lastOffsetCoord = this.offsetCoord;
                     this.setOffset({
                         x: this.lastOffsetCoord.x - diff.x,
                         y: this.lastOffsetCoord.y - diff.y
